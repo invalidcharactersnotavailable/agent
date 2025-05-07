@@ -11,7 +11,7 @@ void print_help() {
 
 void train_model() {
     printf("Training a transformer model...\n");
-    // Add model training logic here
+    // Add model training logic here, AI!
 }
 
 int main(int argc, char *argv[]) {
