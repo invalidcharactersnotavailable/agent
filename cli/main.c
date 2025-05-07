@@ -6,7 +6,7 @@
 void print_help() {
     printf("Usage: cli [command]\n");
     printf("Commands:\n");
-    printf("  train  Train a transformer model\n");
+    printf("  train [epochs]  Train a transformer model for the specified number of epochs\n");
     printf("  help   Print this help message\n");
 }
 
@@ -17,7 +17,12 @@ int main(int argc, char *argv[]) {
     }
 
     if (strcmp(argv[1], "train") == 0) {
-        train_transformer_model();
+        if (argc < 3) {
+            printf("Please specify the number of epochs\n");
+            return 1;
+        }
+        int epochs = atoi(argv[2]);
+        train_transformer_model(epochs);
     } else if (strcmp(argv[1], "help") == 0) {
         print_help();
     } else {
