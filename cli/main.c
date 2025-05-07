@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "transformer_trainer.h"
+#include "ai_transformer/train.h"
+#include "ai_transformer/config.h"
 
 void print_help() {
     printf("Usage: cli [command]\n");
     printf("Commands:\n");
-    printf("  train [epochs]  Train a transformer model for the specified number of epochs\n");
+    printf("  train [config_file]  Train a transformer model using the specified config file\n");
     printf("  help   Print this help message\n");
 }
 
@@ -18,11 +19,11 @@ int main(int argc, char *argv[]) {
 
     if (strcmp(argv[1], "train") == 0) {
         if (argc < 3) {
-            printf("Please specify the number of epochs\n");
+            printf("Please specify the config file\n");
             return 1;
         }
-        int epochs = atoi(argv[2]);
-        train_transformer_model(epochs);
+        const char *config_file = argv[2];
+        ai_transformer_train(config_file);
     } else if (strcmp(argv[1], "help") == 0) {
         print_help();
     } else {
